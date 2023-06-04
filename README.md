@@ -126,9 +126,30 @@ else:
  4- Find "instructor.py" and open it in VS Code to edit.
  
  The "instructor.py" is probably embeded similar to this: file_path = "/System/Volumes/Data/Users/USERNAME/anaconda3/envs/LocalGPT/lib/python3.10/site-packages/InstructorEmbedding/instructor.py"
- 
- You can open the "instrictor.py" and then edit it using this code:
- # Open the file in VSCode
+
+Create a find.py file and run it to place the instructor.py
+
+import os
+
+def find_python_file(root_directory, target_file):
+    for directory, subdirectories, files in os.walk(root_directory):
+        if target_file in files:
+            return os.path.join(directory, target_file)
+    return None
+
+result = find_python_file('/', 'instructor.py')  # Replace with your target file name
+if result:
+    print(f"File found at: {result}")
+else:
+    print("File not found.")
+    
+    
+    
+Once you find it, you can open the "instrictor.py" and then edit it using this code:
+
+#### Open the file in VSCode
+ Create a open.py and then run the following code:
+import os
 subprocess.run(["open", "-a", "Visual Studio Code", file_path])
  
  Once you open "instructor.py" with VS Code, replace the code snippet that has "device_type" with the following codes:
